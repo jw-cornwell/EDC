@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ENFRA Demand Center · Hi-fi prototype</title>
+<meta name="viewport" content="width=1440" />
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; background: #F9FAFB; }
+  body { font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, sans-serif; color: #111827; -webkit-font-smoothing: antialiased; }
+  #root { min-height: 100vh; display: flex; flex-direction: column; }
+  @keyframes edcPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes edcSlideUp { from { transform: translate(-50%, 16px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+  @keyframes edcSlideR { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes edcFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  button { font-family: inherit; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#092B24">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#092B24"/>
+    <rect x="470" y="300" width="260" height="200" rx="24" fill="#D6EF4B"/>
+    <text x="600" y="445" font-family="Geist, Inter, sans-serif" font-size="150" font-weight="800" fill="#092B24" text-anchor="middle">E</text>
+    <text x="600" y="585" font-family="Geist, Inter, sans-serif" font-size="40" font-weight="700" fill="#D6EF4B" text-anchor="middle" letter-spacing="6">ENFRA</text>
+    <text x="600" y="630" font-family="Geist Mono, monospace" font-size="22" font-weight="500" fill="#9CBCBC" text-anchor="middle" letter-spacing="8">DEMAND CENTER</text>
+  </svg>
+</template>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="demo/data.jsx"></script>
+<script type="text/babel" src="demo/shell.jsx"></script>
+<script type="text/babel" src="demo/portfolio.jsx"></script>
+<script type="text/babel" src="demo/drilldowns.jsx"></script>
+<script type="text/babel" src="demo/equipment-overview.jsx"></script>
+<script type="text/babel" src="demo/events.jsx"></script>
+<script type="text/babel" src="demo/drawers.jsx"></script>
+<script type="text/babel" src="demo/search.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useMemo, useCallback } = React;
+
+function Router() {
+  const { route } = useApp();
+  switch (route.name) {
+    case 'portfolio':    return <PortfolioPage />;
+    case 'clients':      return <ClientsListPage />;
+    case 'client':       return <ClientPage />;
+    case 'site':         return <SitePage />;
+    case 'equipment':    return <EquipmentPage />;
+    case 'equipment-overview': return <EquipmentOverviewPage />;
+    case 'equipment-bucket':   return <EquipmentBucketPage />;
+    case 'events':       return <EventsPage />;
+    case 'event-detail': return <EventDetailPage />;
+    case 'enrollment':   return <EnrollmentPage />;
+    default:             return <PortfolioPage />;
+  }
+}
+
+function App() {
+  return (
+    <AppProvider>
+      <Header />
+      <EventBanner />
+      <FilterBar />
+      <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
+        <Sidebar />
+        <main data-screen-label="main-content" style={{ flex: 1, overflowY: 'auto', background: T.bg }}>
+          <Router />
+        </main>
+      </div>
+      <Toast />
+      <Drawer />
+      <SearchPalette />
+    </AppProvider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

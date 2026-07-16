@@ -1,0 +1,207 @@
+/* ============================================================
+   ENFRA EaaS Design System — Colors & Type
+   Source of truth for brand colors, typography, and semantic tokens.
+   Mirrors eaas-app/apps/web/app/globals.css (Tailwind v4 @theme).
+   ============================================================ */
+
+:root {
+  /* ───────────────── Brand palette (primary) ───────────────── */
+  --enfra-blue-steel:   #557F7F;   /* Pantone 7475 C — primary brand color */
+  --enfra-iced-steel:   #D3E7E0;   /* Pantone 621 C — soft fills, chips */
+  --enfra-dark-iron:    #000000;   /* Body text, max-contrast */
+
+  /* ───────────────── Brand palette (accent) ────────────────── */
+  --enfra-safety-yellow: #D6EF4B;  /* Pantone 380 C — CTA accent "lime" */
+  --enfra-safety-yellow-hover: #C5DE3A; /* Pressed / hover state */
+  --enfra-concrete:     #D3CCC4;   /* Pantone 400 C — neutral warm */
+  --enfra-ocean-steel:  #092B24;   /* Pantone 627 C — deep header bg */
+
+  /* In-app aliases used throughout EaaS */
+  --enfra-dark:   var(--enfra-ocean-steel);    /* #092B24 */
+  --enfra-lime:   var(--enfra-safety-yellow);  /* #D6EF4B */
+  --enfra-lime-hover: var(--enfra-safety-yellow-hover);
+  --enfra-steel:  var(--enfra-blue-steel);     /* #557F7F */
+  --enfra-iced:   #F0F5F5;                     /* app-lightened iced steel */
+
+  /* ───────────────── Neutral scale (slate/gray) ────────────── */
+  --gray-50:  #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --gray-900: #111827;
+
+  /* ───────────────── Semantic surface tokens ───────────────── */
+  --bg-app:          var(--gray-50);   /* app shell background */
+  --bg-surface:      #FFFFFF;          /* cards, tables, panels */
+  --bg-muted:        var(--gray-100);  /* secondary surfaces */
+  --bg-header:       var(--enfra-ocean-steel); /* top header */
+
+  --fg-primary:      var(--gray-900);
+  --fg-secondary:    var(--gray-500);
+  --fg-tertiary:     var(--gray-400);
+  --fg-on-dark:      #FFFFFF;
+  --fg-on-accent:    var(--enfra-ocean-steel); /* lime CTA text */
+  --fg-brand:        var(--enfra-ocean-steel);
+  --fg-link:         var(--enfra-steel);
+
+  --border-default:  var(--gray-200);
+  --border-strong:   var(--gray-300);
+  --border-subtle:   var(--gray-100);
+
+  /* ───────────────── Status colors ─────────────────────────── */
+  --status-success-bg: #DCFCE7;  --status-success-fg: #166534;
+  --status-info-bg:    #DBEAFE;  --status-info-fg:    #1E40AF;
+  --status-warn-bg:    #FEF3C7;  --status-warn-fg:    #92400E;
+  --status-error-bg:   #FEE2E2;  --status-error-fg:   #991B1B;
+  --status-neutral-bg: var(--gray-100); --status-neutral-fg: var(--gray-700);
+
+  /* Customer vertical chips */
+  --vertical-federal-bg:    var(--enfra-iced-steel);    --vertical-federal-fg: var(--enfra-ocean-steel);
+  --vertical-healthcare-bg: rgba(214,239,75,0.20);       --vertical-healthcare-fg: var(--enfra-ocean-steel);
+  --vertical-highered-bg:   rgba(85,127,127,0.10);       --vertical-highered-fg:   var(--enfra-steel);
+  --vertical-municipal-bg:  rgba(211,204,196,0.60);      --vertical-municipal-fg:  var(--enfra-ocean-steel);
+
+  /* ───────────────── Radii ─────────────────────────────────── */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  8px;    /* default (shadcn var(--radius)) */
+  --radius-lg:  12px;   /* cards */
+  --radius-xl:  16px;
+  --radius-pill: 9999px;
+
+  /* ───────────────── Shadows (elevation) ───────────────────── */
+  --shadow-xs: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05), 0 1px 3px 0 rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+  --shadow-header: 0 2px 4px 0 rgba(0,0,0,0.10);
+  --ring-focus: 0 0 0 2px rgba(214,239,75,0.45); /* lime focus ring */
+
+  /* ───────────────── Spacing scale (4px base) ──────────────── */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ───────────────── Typography families ───────────────────── */
+  /* Brand fonts (licensed via Adobe Fonts — not shippable here) */
+  --font-display-brand: "Sweet Sans Pro", "Inter", Arial, sans-serif;
+  --font-body-brand:    "Dashiell Text", Georgia, "Times New Roman", serif;
+
+  /* In-app fonts (as used in Next.js codebase — Geist) */
+  --font-sans: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Fallback for Office / system (per brand guidelines) */
+  --font-fallback: Arial, Helvetica, sans-serif;
+
+  /* ───────────────── Type scale ────────────────────────────── */
+  --fs-xs:   11px;  --lh-xs: 16px;
+  --fs-sm:   12px;  --lh-sm: 16px;
+  --fs-base: 14px;  --lh-base: 20px;   /* app default */
+  --fs-md:   16px;  --lh-md: 24px;
+  --fs-lg:   18px;  --lh-lg: 28px;
+  --fs-xl:   20px;  --lh-xl: 28px;
+  --fs-2xl:  24px;  --lh-2xl: 32px;    /* page h1 */
+  --fs-3xl:  30px;  --lh-3xl: 36px;    /* marketing h1 */
+  --fs-4xl:  36px;  --lh-4xl: 40px;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold:    700;
+
+  --tracking-tight:  -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-widest: 0.10em;   /* section labels — "UPPERCASE LABEL" */
+}
+
+/* ───────────────── Base element styles ─────────────────────── */
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--fg-primary);
+  background: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ───────────────── Semantic type roles ─────────────────────── */
+.ds-h1,
+h1.ds {
+  font-family: var(--font-sans);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-2xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+}
+
+.ds-h2,
+h2.ds {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--fg-primary);
+}
+
+.ds-h3,
+h3.ds {
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
+  font-weight: var(--fw-semibold);
+  color: var(--fg-primary);
+}
+
+.ds-body {
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  font-weight: var(--fw-regular);
+  color: var(--fg-primary);
+}
+
+.ds-body-sm {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  color: var(--fg-secondary);
+}
+
+/* Eyebrow / section label — used heavily in EaaS panels */
+.ds-eyebrow {
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+}
+
+/* Numeric / KPI — monospaced, semi-bold */
+.ds-numeric {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-semibold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+.ds-code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  background: var(--bg-muted);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-default);
+}
